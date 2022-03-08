@@ -1,0 +1,18 @@
+.sliderSize{
+    height: 580px;
+}
+.sliderSize img{
+height: 580px;
+object-fit: cover;
+opacity: 70%;
+}
+
+.letterSize {
+    font-weight: 900;
+}
+.letterSize h1, h5 {
+    font-weight: 900;
+    
+}
+
+
