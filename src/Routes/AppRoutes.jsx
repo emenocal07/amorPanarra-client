@@ -8,7 +8,6 @@ import CartPage from '../pages/CartPage/CartPage'
 import PaymentPage from '../pages/PaymentPage/PaymentPage'
 import PrivateRoute from './PrivateRoute'
 import EditProductPage from '../pages/EditProductPage/EditProductPage'
-import PrivateRoute from './PrivateRoute'
 import EditUserPage from '../pages/EditUserPage/EditUserPage'
 
 const AppRoutes = () => {
