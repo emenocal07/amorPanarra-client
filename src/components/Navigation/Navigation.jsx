@@ -24,8 +24,8 @@ const Navigation = () => {
                 <Container>
                     <NavLink to="/">
                         <Navbar.Brand as='span'> <img
-                            src="https://res.cloudinary.com/dabjtydsw/image/upload/v1646242070/sljmoym4pjw4tt9ugyme.png"
-                            width="100"
+                            src="https://res.cloudinary.com/dabjtydsw/image/upload/v1646821362/amorPanarra_logoNav_1_f41bci.png"
+                            width="120"
                             height="50"
                             className="d-inline-block align-top"
                             alt="Amor Panarra logo"

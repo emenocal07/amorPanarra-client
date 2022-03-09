@@ -7,3 +7,8 @@
     width: 100%;
     height: 200px;
 }
+
+.titleProductCard{
+    text-decoration: none;
+    color: black;
+}

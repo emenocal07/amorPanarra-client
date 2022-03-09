@@ -1,10 +1,10 @@
 .sliderSize{
-    height: 580px;
+    height: 500px;
 }
 .sliderSize img{
-height: 580px;
+height: 500px;
 object-fit: cover;
-opacity: 70%;
+
 }
 
 .letterSize {
@@ -15,4 +15,8 @@ opacity: 70%;
     
 }
 
+.sliderLogo{
+    width: 600px;
+    height: 300px;
+} 
 
