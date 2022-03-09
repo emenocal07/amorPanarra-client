@@ -1,44 +1,19 @@
 import { useContext, useState, useEffect } from "react"
-import { ProductsContext } from "../../context/Products.context"
+import { CartContext } from "../../context/Cart.context"
+import { AuthContext } from "../../context/Auth.context"
 import { Container, Table, Button, Row, Col } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 import './CartPage.css'
 
 const CartPage = () => {
 
-    const { shoppingList, deleteFromCart } = useContext(ProductsContext)
-    const [itemQuantity, setItemQuantity] = useState(1)
-    const [subTotal, setSubtotal] = useState(0)
-    const [total, setTotal] = useState(0)
+    const { productsInCart, loadCart, removeProductFromCart, getSubtotal, getTotalPrice, shippingCost } = useContext(CartContext)
 
-    useEffect(() => {
-      getSubTotal()
-    }, [shoppingList, itemQuantity])
+    const { user } = useContext(AuthContext)
 
-    useEffect(() => {
-        getTotalResult()
-    }, [subTotal])
-    
-    let shippingCost = 3.50
-
-    function getSubTotal() {
-        shoppingList.map((elm) => {
-            setSubtotal(prevValue => prevValue + elm.price)
-        })
-        setTotal(subTotal + shippingCost)
-    }
-
-    function getTotalResult() {
-        setTotal(subTotal + shippingCost)
-    }
-
-    function emptyCart() {
-        shoppingList.length = 0
-        return shoppingList
-    }
+    useEffect(() => user && loadCart(user._id), [user])
 
     return (
-
         <Container>
             <h1>Detalles de tu pedido</h1>
             <Table striped bordered hover>
@@ -50,20 +25,20 @@ const CartPage = () => {
                         <th>Precio</th>
                     </tr>
                 </thead>
-                {shoppingList.map((product, idx) => {
-                    return <tbody key={shoppingList._id}>
+                {productsInCart.map((elm, idx) => {
+                    return <tbody key={elm.product._id}>
                         <tr >
                             <td>{idx + 1}</td>
-                            <td><img className='tableImage' src={product.image} /></td>
-                            <td>{product.name}</td>
-                            <td>{product.price}</td>
+                            <td><img className='tableImage' src={elm.product.image} /></td>
+                            <td>{elm.product.name}</td>
+                            <td>{elm.product.price}</td>
                             <td>
-                                <Button variant="danger" onClick={() => setItemQuantity((countValue) => countValue - 1)}>-</Button>
+                                {/* <Button variant="danger" onClick={() => setItemQuantity((countValue) => countValue - 1)}>-</Button>
                                 {itemQuantity}
-                                <Button variant="danger" onClick={() => setItemQuantity((countValue) => countValue + 1)}>+</Button>
+                                <Button variant="danger" onClick={() => setItemQuantity((countValue) => countValue + 1)}>+</Button> */}
                             </td>
                             <td>
-                                <Button variant="danger" onClick={() => deleteFromCart(product)}>Eliminar</Button>
+                                <Button variant="danger" onClick={() => removeProductFromCart(elm.product._id)}>Eliminar</Button>
                             </td>
                         </tr>
                     </tbody>
@@ -75,11 +50,12 @@ const CartPage = () => {
                         <th></th>
                         <th></th>
                         <th>Subtotal</th>
-                        <th>{subTotal.toFixed(2)} €</th>
+                        <th>{getSubtotal()} €</th>
                     </tr>
                 </tfoot>
 
             </Table>
+
             <Row className="justify-content-md-end">
                 <Col md={{ span: 3, offset: 3 }}>
                     <h3>Total compra</h3>
@@ -87,7 +63,7 @@ const CartPage = () => {
                         <tbody >
                             <tr>
                                 <td>Subtotal:</td>
-                                <td>{subTotal.toFixed(2)} €</td>
+                                <td>{getSubtotal().toFixed(2)} €</td>
                             </tr>
                             <tr>
                                 <td>Gastos de envío:</td>
@@ -95,7 +71,7 @@ const CartPage = () => {
                             </tr>
                             <tr>
                                 <td>Total:</td>
-                                <td>{shoppingList.length === 0 ? '0.00' : total.toFixed(2)} €</td>
+                                <td>{productsInCart.length ? getTotalPrice().toFixed(2) : '0.00'} €</td>
                             </tr>
 
                         </tbody>
@@ -103,6 +79,7 @@ const CartPage = () => {
                     </Table>
                 </Col>
             </Row>
+
             <Row >
                 <Col >
                     <Link to='/'>
@@ -111,7 +88,7 @@ const CartPage = () => {
                 </Col>
                 <Col >
                     <Link to='/'>
-                        <Button className='btn btn-outline-warning' variant="danger" size='lg' onClick={() => emptyCart()}>Vaciar carrito</Button>
+                        <Button className='btn btn-outline-warning' variant="danger" size='lg'>Vaciar carrito</Button>
                     </Link>
                 </Col>
                 <Col md={{ span: 3, offset: 3 }}>
@@ -122,7 +99,6 @@ const CartPage = () => {
             </Row>
             <br />
         </Container>
-
     )
 }
 

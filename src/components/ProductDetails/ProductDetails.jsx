@@ -6,11 +6,10 @@ import { AuthContext } from '../../context/Auth.context'
 
 
 const ProductDetails = ({ productDetails }) => {
-    console.log(productDetails)
 
     const { name, description, price, image, ingredients, category, weight, glutenfree, featured, _id } = productDetails
     const cartProduct = { name, price, image, _id }
-    const { addToCart } = useContext(ProductsContext)
+    const { addToUserCart } = useContext(ProductsContext)
     const { user } = useContext(AuthContext)
 
 
@@ -39,7 +38,7 @@ const ProductDetails = ({ productDetails }) => {
                     <Card.Text>Peso: {weight}</Card.Text>
                     <Card.Text>Destacado: {featured}</Card.Text>
                     <Card.Text>Precio: {price} €</Card.Text>
-                    <Button variant="warning" onClick={() => addToCart(cartProduct)}>Agregar al carrito</Button>
+                    <Button variant="warning" onClick={() => addToUserCart(cartProduct)}>Agregar al carrito</Button>
                     <Link to='/'>
                         <Button className='btn btn-outline-warning' variant="light">Volver a la lista</Button>
                     </Link>

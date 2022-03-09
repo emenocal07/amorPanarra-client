@@ -6,17 +6,21 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { MessageProviderWrapper } from './context/UserMessage.context';
 import { AuthProviderWrapper } from './context/Auth.context';
 import { ProductProviderWrapper } from './context/Products.context';
+import { CartProviderWrapper } from './context/Cart.context';
+
 
 
 ReactDOM.render(
   <Router>
-    <MessageProviderWrapper>
-      <ProductProviderWrapper>
-        <AuthProviderWrapper>
-          <App />
-        </AuthProviderWrapper>
-      </ProductProviderWrapper>
-    </MessageProviderWrapper>
+    <CartProviderWrapper>
+      <MessageProviderWrapper>
+        <ProductProviderWrapper>
+          <AuthProviderWrapper>
+            <App />
+          </AuthProviderWrapper>
+        </ProductProviderWrapper>
+      </MessageProviderWrapper>
+    </CartProviderWrapper>
   </Router>,
   document.getElementById('root')
 )

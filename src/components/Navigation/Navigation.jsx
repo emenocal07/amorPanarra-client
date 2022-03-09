@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import { Navbar, Nav, Container, Modal } from 'react-bootstrap'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { AuthContext } from '../../context/Auth.context'
 import NewProductForm from '../NewProductForm/NewProductForm'
 import './Navigation.css'
@@ -11,7 +11,6 @@ import ShoppingCart from '../ShoppingCart/ShoppingCart'
 const Navigation = () => {
 
     const [showModal, setShowModal] = useState(false)
-    const { _id } = useParams
 
     const handleModalOpen = () => setShowModal(true)
     const handleModalClose = () => setShowModal(false)
