@@ -31,6 +31,18 @@ class UsersService {
     deleteUser = user_id => {
         return this.api.delete(`/delete/${user_id}`)
     }
+
+    addUserProduct = (product_id) => {
+        return this.api.put(`/cart/addProduct/${product_id}`)
+    }
+
+    getCartProducts = (user_id) => {
+        return this.api.get(`/cart/getCartProducts`, user_id)
+    }
+
+    removeUserProduct = (product_id) => {
+        return this.api.put(`/cart/removeProduct/${product_id}`)
+    }
 }
 const usersService = new UsersService()
 

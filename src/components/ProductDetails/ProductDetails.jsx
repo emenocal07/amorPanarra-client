@@ -1,21 +1,19 @@
 import { Card, Button, Row, Col, Container, Image } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
-import { ProductsContext } from "../../context/Products.context"
 import { AuthContext } from '../../context/Auth.context'
 import { MessageContext } from '../../context/UserMessage.context'
 import productsService from '../../services/product.service'
-
+import { CartContext } from '../../context/Cart.context'
 
 const ProductDetails = ({ productDetails }) => {
-    console.log(productDetails)
 
     const { name, description, price, image, ingredients, category, weight, glutenfree, featured, _id } = productDetails
     const cartProduct = { name, price, image, _id }
-    const { addToCart } = useContext(ProductsContext)
     const { user } = useContext(AuthContext)
     const { setMessageInfo, setShowMessage } = useContext(MessageContext)
 
+    const { addProductToCart } = useContext(CartContext)
     const navigate = useNavigate()
 
     const deleteProducts = () => {
@@ -58,7 +56,7 @@ const ProductDetails = ({ productDetails }) => {
                             <Image className='rounded' style={{ width: '500px' }} variant="top" src={image} />
                             <br />
                             <div className='d-grip gap-2'>
-                                <Button className='btn btn-outline-warning' variant='dark' onClick={() => addToCart(cartProduct)}>Comprar</Button>
+                                <Button className='btn btn-outline-warning' variant='dark' onClick={() => addProductToCart(_id)}>Comprar</Button>
                             </div>
                         </Col>
 

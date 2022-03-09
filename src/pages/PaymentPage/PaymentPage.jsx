@@ -1,6 +1,10 @@
+import { useContext } from "react"
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap"
+import { CartContext } from "../../context/Cart.context"
 
 const PaymentPage = () => {
+
+    const { getTotalPrice } = useContext(CartContext)
 
     return (
         <Container>
@@ -13,7 +17,7 @@ const PaymentPage = () => {
                                 <Card.Header>
 
                                     <h1>Importe total a pagar</h1>
-                                    <h1>22,15€</h1>
+                                    <h1>{getTotalPrice().toFixed(2)}€</h1>
 
                                 </Card.Header>
                             </Container>

@@ -1,14 +1,13 @@
 import { Card, Button, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './ProductCard.css'
-import { ProductsContext } from "../../context/Products.context"
+import { CartContext } from '../../context/Cart.context'
 import { useContext } from 'react'
 
 
 const ProductCard = ({ name, image, price, glutenfree, _id }) => {
 
-    const cartProduct = { name, price, image, _id }
-    const { addToCart } = useContext(ProductsContext)
+    const { addProductToCart } = useContext(CartContext)
 
     return (
 
@@ -23,7 +22,7 @@ const ProductCard = ({ name, image, price, glutenfree, _id }) => {
                             <Card.Text>Precio: {price}€ </Card.Text>
                         </Col>
                         <Col md={4}>
-                            <Button className='btn btn-outline-warning' size='sm' variant='dark' onClick={() => addToCart(cartProduct)}>Comprar</Button>
+                            <Button className='btn btn-outline-warning' size='sm' variant='dark' onClick={() => addProductToCart(_id)}>Comprar</Button>
                         </Col>
                     </Row>
                 </Card.Body>
