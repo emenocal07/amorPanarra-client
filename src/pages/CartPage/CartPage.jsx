@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { CartContext } from "../../context/Cart.context"
 import { AuthContext } from "../../context/Auth.context"
 import { Container, Table, Button, Row, Col, Card } from "react-bootstrap"
@@ -99,7 +99,8 @@ const CartPage = () => {
             </Row >
             <br />
         </Container >
-        : (isEmpty ? <h1>Vacio</h1> : <h1><LoadingSpinner /></h1>)
+        : <h1>Carrito vacio <LoadingSpinner /> </h1>
+    //    (isEmpty ? <h1>Vacio</h1> : <h1><LoadingSpinner /></h1>)
 }
 
 export default CartPage

@@ -6,7 +6,7 @@ const AboutUs = () => {
     return (
         <>
             <Container className='aboutUs'>
-                <h2 className='titleAboutUs'>Nuestra historia...</h2>
+                <h2 className='titleAboutUs'>Nuestra historia</h2>
                 <hr />
                 <Row className='align-items-center'>
                     <Col className='aboutText' md={{ offset: 1, span: 5 }}>

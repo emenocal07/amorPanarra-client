@@ -67,7 +67,7 @@ const EditProductForm = () => {
             .then(({ data }) => {
                 setShowMessage(true)
                 setMessageInfo({ title: 'Perfecto!', desc: 'Has modificado el producto' })
-                navigate('/')
+                navigate(`/productos/${product_id}`)
             })
             .catch(err => console.log(err))
     }

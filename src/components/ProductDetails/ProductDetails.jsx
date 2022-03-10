@@ -37,7 +37,7 @@ const ProductDetails = ({ productDetails }) => {
                     <Row>
                         <Col>
                             <Card.Body>
-                                <Card.Title><h1>{name} {glutenfree && <img className='glutenD' src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646934143/gluten-free-icon_ranzca.png' />}</h1></Card.Title>
+                                <Card.Title><h1>{name} {glutenfree && <img className='glutenD' alt='glutenfree icon' src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646934143/gluten-free-icon_ranzca.png' />}</h1></Card.Title>
                                 <br />
                                 <Card.Title>Descripción</Card.Title>
                                 <hr />
@@ -46,11 +46,8 @@ const ProductDetails = ({ productDetails }) => {
                                 <Card.Title>Ingredientes</Card.Title>
                                 <hr />
                                 <Card.Text>{ingredients}</Card.Text>
-                                {/* <Card.Title>Información adicional</Card.Title>
-                                <hr /> */}
                                 <Link to='/'>
                                     <Button className='btn btn-outline-warning' variant="light" size='sm'><img style={{ width: '30px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646946851/arrow-left-c_icon-icons.com_50470_fqfgzk.png' /></Button>
-                                    {/* <Button style={{ width: '' }} className='btn btn-outline-warning' variant="light">Volver</Button> */}
                                 </Link>
                             </Card.Body>
                         </Col>
