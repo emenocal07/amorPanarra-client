@@ -1,0 +1,8 @@
+.imageProductDetails{
+    object-fit: cover;
+    height: 320px;
+}
+
+.detailsProduct{
+    padding: 50px;
+}

@@ -22,8 +22,6 @@ const UsersListPage = () => {
     return (
         <section>
             <Container>
-                <h1>Listado de Usuarios</h1>
-                <hr />
                 <UsersList users={users} />
             </Container>
         </section>

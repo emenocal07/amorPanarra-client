@@ -134,7 +134,7 @@ const EditProductForm = () => {
 
                             </Row>
                             < div className="d-grid gap-2 mb-3" >
-                                <Button variant="warning" type="submit" disabled={loadingImage}>{loadingImage ? 'Espere por favor...' : 'Modificar producto'}</Button>
+                                <Button variant="warning" type="submit" disabled={loadingImage}>{loadingImage ? 'Espere por favor...' : 'Editar producto'}</Button>
                             </div>
                             <br />
                         </Form >

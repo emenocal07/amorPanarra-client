@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { AuthContext } from '../../context/Auth.context'
-import { Card, Button, Container } from 'react-bootstrap'
+import { Card, Button, Container, Row, Col } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom'
 import { MessageContext } from "../../context/UserMessage.context"
 import usersService from '../../services/user.service'
@@ -25,31 +25,44 @@ const UserDetails = ({ userDetails }) => {
 
     return (
         <Container>
-            <Card.Body>
-                <Card.Title><h1>{username} {userlastname}</h1></Card.Title>
-            </Card.Body>
-            <Card.Body>
-                <hr />
-                <Card.Title>Dirección</Card.Title>
-                <Card.Text>Calle {address.street.name} {address.street.number}, {address.postCode} {address.city}, {address.country}</Card.Text>
-                <hr />
-                <Card.Title>Contacto</Card.Title>
-                <Card.Text>Teléfono: {phone}</Card.Text>
-                <Card.Text>email: {email}</Card.Text>
-                <hr />
-                {
-                    (user?.role === 'ADMIN') &&
-                    <>
-                        <Card.Title>Rol</Card.Title>
-                        <Card.Text>{role}</Card.Text>
-                        <hr />
-                    </>
-                }
-            </Card.Body >
-            <Card.Body>
-                <Link to={`/perfiles/editar/${user_id}`}><Button variant="warning">Editar</Button></Link>
-                <Button variant="danger" onClick={() => deleteProfile()}>Eliminar</Button>
-            </Card.Body>
+            <Row>
+                <Col md={{ offset: 3, span: 6 }}>
+                    <Card>
+                        <Card.Body>
+                            <Card.Title><h1>{username} {userlastname}</h1></Card.Title>
+
+
+                            <hr />
+                            <Card.Title>Dirección</Card.Title>
+                            <Card.Text>Calle {address.street.name} {address.street.number}, {address.postCode} {address.city}, {address.country}</Card.Text>
+                            <hr />
+                            <Card.Title>Contacto</Card.Title>
+                            <Card.Text>Teléfono: {phone}</Card.Text>
+                            <Card.Text>email: {email}</Card.Text>
+                            <hr />
+                            {
+                                (user?.role === 'ADMIN') &&
+                                <>
+                                    <Card.Title>Rol</Card.Title>
+                                    <Card.Text>{role}</Card.Text>
+                                    <hr />
+                                </>
+                            }
+                        </Card.Body >
+                        <Container>
+                            <Card.Body>
+                                <Link to='/'>
+                                    <Button className='btn btn-outline-dark' variant="light" size='sm'><img style={{ width: '28px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646900519/flecha2_laupdk.png' /></Button>
+                                </Link>
+                                <Link to={`/perfiles/editar/${user_id}`}><Button style={{ width: '30%' }} className='btn btn-outline-dark' variant="light">Editar</Button></Link>
+                                {(user?.role === 'ADMIN') &&
+                                    <Button style={{ width: '30%' }} className='btn btn-outline-danger' variant="light" onClick={() => deleteProfile()}>Eliminar</Button>
+                                }
+                            </Card.Body>
+                        </Container>
+                    </Card>
+                </Col>
+            </Row>
         </Container >
     )
 }

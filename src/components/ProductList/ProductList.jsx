@@ -6,11 +6,11 @@ const ProductList = ({ products }) => {
 
     return (
         <Container className='productList'>
-            <h1>Productos</h1>
+            <h2 className='titleProductList'>Productos</h2>
             <hr />
-            <Row className='justify-content-center'>
+            <Row >
                 {products.map(product => {
-                    return <Col md={4} key={product._id}> <ProductCard {...product} /> </Col>
+                    return <Col className='justify-content-center' md={4} key={product._id}> <ProductCard {...product} /> </Col>
                 })}
             </Row>
         </Container>

@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button, Container, Row, Col } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/Auth.context'
 import { MessageContext } from '../../context/UserMessage.context'
@@ -27,24 +27,26 @@ const UserCard = ({ username, userlastname, email, role, _id }) => {
 
     return (
 
-        <article>
-
-            <Card className='userCard' style={{ width: '18rem' }}>
-                <Card.Body>
-                    <Card.Title>{username} {userlastname}</Card.Title>
-                    <Card.Subtitle>{email}</Card.Subtitle>
-                    <hr />
-                    {(user?.role === 'ADMIN') &&
-                        <Card.Subtitle>{role}</Card.Subtitle>
-                    }
-                </Card.Body>
-                <Card.Body>
-                    <Link className='btn btn-outline-warning' to={`/perfiles/${_id}`}>Detalles</Link>
-                    <Button className='btn btn-outline-danger' variant="light" onClick={() => deleteProfile()}>Eliminar</Button>
-                </Card.Body>
-            </Card>
-
-        </article>
+        <Container>
+            <Row>
+                <Col >
+                    <Card className='userCard' style={{ width: '18rem' }}>
+                        <Card.Body>
+                            <Card.Title>{username} {userlastname}</Card.Title>
+                            <Card.Subtitle>{email}</Card.Subtitle>
+                            <hr />
+                            {(user?.role === 'ADMIN') &&
+                                <Card.Subtitle>{role}</Card.Subtitle>
+                            }
+                        </Card.Body>
+                        <Card.Body>
+                            <Link className='btn btn-outline-dark' to={`/perfiles/${_id}`}>Detalles</Link>
+                            <Button className='btn btn-outline-danger' variant="light" onClick={() => deleteProfile()}>Eliminar</Button>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

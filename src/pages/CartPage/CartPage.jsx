@@ -41,14 +41,14 @@ const CartPage = () => {
                             <td>{idx + 1}</td>
                             <td><img className='tableImage' src={elm.product.image} /></td>
                             <td>{elm.product.name}</td>
-                            <td>{elm.product.price.toFixed(2)}€</td>
+                            <td>{elm.product.price?.toFixed(2)}€</td>
                             {/* <td> */}
                             {/* <Button variant="danger" onClick={() => setItemQuantity((countValue) => countValue - 1)}>-</Button>
                                 {itemQuantity}
                                 <Button variant="danger" onClick={() => setItemQuantity((countValue) => countValue + 1)}>+</Button> */}
                             {/* </td> */}
                             <td>
-                                <Button variant="danger" onClick={() => removeProductFromCart(elm._id)}>Eliminar</Button>
+                                <Button className='btn btn-outline-danger' variant="light" onClick={() => removeProductFromCart(elm._id)}>Eliminar</Button>
                             </td>
                         </tr>
                     </tbody>
@@ -61,6 +61,8 @@ const CartPage = () => {
                         <th></th>
                         <th>Subtotal</th>
                         <th>{getSubtotal().toFixed(2)} €</th>
+                        <th></th>
+
                     </tr>
                 </tfoot>
 
@@ -98,12 +100,12 @@ const CartPage = () => {
                 </Col>
                 <Col >
                     <Link to='/'>
-                        <Button className='btn btn-outline-warning' variant="danger" size='lg'>Vaciar carrito</Button>
+                        <Button className='btn btn-outline-danger' variant="light" size='lg'>Vaciar carrito</Button>
                     </Link>
                 </Col>
                 <Col md={{ span: 3, offset: 3 }}>
                     <Link to='/finalizar-compra' >
-                        <Button className='buyButton btn btn-outline-warning' style={{ width: '100%' }} variant="dark" size='lg'>Finalizar compra</Button>
+                        <Button className='buyButton btn btn-warning' style={{ width: '100%' }} variant="warning" size='lg'>Finalizar compra</Button>
                     </Link>
                 </Col>
             </Row>

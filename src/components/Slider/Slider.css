@@ -1,22 +1,16 @@
 .sliderSize{
-    height: 500px;
+    height: 120px;
+    margin-top: -50px;
 }
 .sliderSize img{
-height: 500px;
+height: 120px;
 object-fit: cover;
 
-}
-
-.letterSize {
-    font-weight: 900;
-}
-.letterSize h1, h5 {
-    font-weight: 900;
-    
 }
 
 .sliderLogo{
     width: 600px;
     height: 300px;
 } 
+
 

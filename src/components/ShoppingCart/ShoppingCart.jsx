@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { CartContext } from "../../context/Cart.context"
 import { AuthContext } from "../../context/Auth.context"
 import { useContext } from 'react'
@@ -7,7 +7,7 @@ import './ShoppingCart.css'
 function ShoppingCart() {
 
     const { user } = useContext(AuthContext)
-    const { loadCart, getTotalPrice, getTotalItems } = useContext(CartContext)
+    const { loadCart, getTotalItems } = useContext(CartContext)
 
     useEffect(() => user && loadCart(user._id), [user])
 

@@ -6,6 +6,7 @@ const EditUserPage = () => {
 
     return (
         <Container className='editUserPage'>
+            <h3>Editar mi perfil</h3>
             <EditUserForm />
         </Container>
     )

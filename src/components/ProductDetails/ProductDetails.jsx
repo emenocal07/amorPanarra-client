@@ -5,12 +5,13 @@ import { AuthContext } from '../../context/Auth.context'
 import { MessageContext } from '../../context/UserMessage.context'
 import productsService from '../../services/product.service'
 import { CartContext } from '../../context/Cart.context'
+import './ProductDetails.css'
 
 const ProductDetails = ({ productDetails }) => {
 
     const { name, description, price, image, ingredients, category, weight, glutenfree, featured, _id } = productDetails
     const cartProduct = { name, price, image, _id }
-    const { user } = useContext(AuthContext)
+    const { user, isLoggedIn } = useContext(AuthContext)
     const { setMessageInfo, setShowMessage } = useContext(MessageContext)
 
     const { addProductToCart } = useContext(CartContext)
@@ -32,7 +33,7 @@ const ProductDetails = ({ productDetails }) => {
         <Container>
             <br /><br />
             <Card>
-                <Container>
+                <Container className='detailsProduct'>
                     <Row>
                         <Col>
                             <Card.Body>
@@ -54,19 +55,21 @@ const ProductDetails = ({ productDetails }) => {
                             </Card.Body>
                         </Col>
                         <Col md={6} className='align-items-center'>
-                            <br />
-                            <Image className='rounded' style={{ width: '500px' }} variant="top" src={image} />
-                            <Row>
-                                <Col md={3}>
-                                    <br />
-                                    <Card.Text>Peso: {weight} g</Card.Text>
-                                    <Card.Text>Precio: {price} €</Card.Text>
-                                </Col>
-                                <Col md={9}>
-                                    <br />
-                                    <Button style={{ width: '95%' }} className='d-grip gap-2 btn btn-outline-warning' size='lg' variant='dark' onClick={() => addProductToCart(_id)}>Comprar</Button>
-                                </Col>
-                            </Row>
+                            <Container>
+                                <br />
+                                <Image className='rounded imageProductDetails' style={{ width: '100%' }} variant="top" src={image} />
+                                <Row>
+                                    <Col md={3}>
+                                        <br />
+                                        <p>Peso: {weight} g</p>
+                                        <p>Precio: {price} €</p>
+                                    </Col>
+                                    <Col md={9}>
+                                        <br />
+                                        <Button style={{ width: '100%' }} className='d-grip gap-2 btn btn-warning' size='lg' variant='warning' onClick={() => isLoggedIn ? addProductToCart(_id) : navigate('/inicio-sesion')}>Comprar</Button>
+                                    </Col>
+                                </Row>
+                            </Container>
                         </Col>
                         <Container>
 
@@ -75,7 +78,7 @@ const ProductDetails = ({ productDetails }) => {
                                     <Row >
                                         <Col >
                                             <Link to={`/productos/editar/${_id}`}>
-                                                <Button style={{ width: '25%' }} className='btn btn-outline-success' variant="light" >Editar</Button>
+                                                <Button style={{ width: '25%' }} className='btn btn-outline-dark' variant="light" >Editar</Button>
                                             </Link >
 
                                             <Button style={{ width: '25%' }} className='btn btn-outline-danger' variant="light" onClick={() => deleteProducts()}>Eliminar</Button>
