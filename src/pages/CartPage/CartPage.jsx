@@ -16,7 +16,7 @@ const CartPage = () => {
     return (
         <Container>
             <h1>Detalles de tu pedido</h1>
-            <Table striped bordered hover>
+            <Table striped bordered hover >
                 <thead >
                     <tr>
                         <th>#</th>

@@ -45,40 +45,47 @@ const ProductDetails = ({ productDetails }) => {
                                 <Card.Title>Ingredientes</Card.Title>
                                 <hr />
                                 <Card.Text>{ingredients}</Card.Text>
-                                <Card.Title>Información adicional</Card.Title>
-                                <hr />
-                                <Card.Text>Peso: {weight} g</Card.Text>
-                                <Card.Text>Precio: {price} €</Card.Text>
+                                {/* <Card.Title>Información adicional</Card.Title>
+                                <hr /> */}
+                                <Link to='/'>
+                                    <Button className='btn btn-outline-dark' variant="light" size='sm'><img style={{ width: '30px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646900519/flecha2_laupdk.png' /></Button>
+                                    {/* <Button style={{ width: '' }} className='btn btn-outline-warning' variant="light">Volver</Button> */}
+                                </Link>
                             </Card.Body>
                         </Col>
-                        <Col md={6}>
+                        <Col md={6} className='align-items-center'>
                             <br />
                             <Image className='rounded' style={{ width: '500px' }} variant="top" src={image} />
-                            <br />
-                            <div className='d-grip gap-2'>
-                                <Button className='btn btn-outline-warning' variant='dark' onClick={() => addProductToCart(_id)}>Comprar</Button>
-                            </div>
+                            <Row>
+                                <Col md={3}>
+                                    <br />
+                                    <Card.Text>Peso: {weight} g</Card.Text>
+                                    <Card.Text>Precio: {price} €</Card.Text>
+                                </Col>
+                                <Col md={9}>
+                                    <br />
+                                    <Button style={{ width: '95%' }} className='d-grip gap-2 btn btn-outline-warning' size='lg' variant='dark' onClick={() => addProductToCart(_id)}>Comprar</Button>
+                                </Col>
+                            </Row>
                         </Col>
+                        <Container>
 
+                            {(user?.role === 'ADMIN') &&
+                                <Card.Body>
+                                    <Row >
+                                        <Col >
+                                            <Link to={`/productos/editar/${_id}`}>
+                                                <Button style={{ width: '25%' }} className='btn btn-outline-success' variant="light" >Editar</Button>
+                                            </Link >
 
-                        {(user?.role === 'ADMIN') &&
-                            <Card.Body>
-                                <Row>
-                                    <Col>
-                                        <Link to={`/productos/editar/${_id}`}>
-                                            <Button className='btn btn-outline-success' variant="light" >Editar</Button>
-                                        </Link >
-                                        <Button className='btn btn-outline-danger' variant="light" onClick={() => deleteProducts()}>Eliminar</Button>
-                                    </Col>
-                                    <Col md={{ span: 11, offset: 11 }}>
-                                        <Link to='/'>
-                                            <Button className='btn btn-outline-warning' variant="light">Volver</Button>
-                                        </Link>
-                                    </Col>
-                                </Row>
-                            </Card.Body>
-                        }
-
+                                            <Button style={{ width: '25%' }} className='btn btn-outline-danger' variant="light" onClick={() => deleteProducts()}>Eliminar</Button>
+                                        </Col>
+                                        <Col >
+                                        </Col>
+                                    </Row>
+                                </Card.Body>
+                            }
+                        </Container>
                     </Row>
                 </Container>
             </Card >

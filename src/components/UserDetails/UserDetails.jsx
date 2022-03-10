@@ -1,7 +1,11 @@
+import { useContext } from 'react'
 import { Card, Container } from 'react-bootstrap'
+import { AuthContext } from '../../context/Auth.context'
+
 
 const UserDetails = ({ userDetails }) => {
     const { username, userlastname, email, phone, address, role } = userDetails
+    const { user } = useContext(AuthContext)
 
     return (
         <Container>
@@ -17,10 +21,13 @@ const UserDetails = ({ userDetails }) => {
                 <Card.Text>Teléfono: {phone}</Card.Text>
                 <Card.Text>email: {email}</Card.Text>
                 <hr />
-                <Card.Title>Rol</Card.Title>
-                <Card.Text>{role}</Card.Text>
-
-                <hr />
+                {(user?.role === 'ADMIN') &&
+                    <>
+                        <Card.Title>Rol</Card.Title>
+                        <Card.Text>{role}</Card.Text>
+                        <hr />
+                    </>
+                }
             </Card.Body>
         </Container>
     )

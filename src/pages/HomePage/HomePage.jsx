@@ -1,6 +1,4 @@
-import { useState, useEffect, useContext } from "react"
-import { Container } from "react-bootstrap"
-import productsService from '../../services/product.service'
+import { useEffect, useContext } from "react"
 import ProductList from '../../components/ProductList/ProductList'
 import Slider from "../../components/Slider/Slider"
 import './HomePage.css'
@@ -19,14 +17,9 @@ const HomePage = () => {
 
     return (
         <>
-            <section>
-                <Slider />
-                <AboutUs />
-
-                {!products.length ? <LoadingSpinner /> : <ProductList products={products} />}
-
-            </section>
-
+            <Slider />
+            <AboutUs />
+            {!products.length ? <LoadingSpinner /> : <ProductList products={products} />}
             <br />
         </>
     )
