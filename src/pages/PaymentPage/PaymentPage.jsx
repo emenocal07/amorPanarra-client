@@ -35,7 +35,7 @@ const PaymentPage = () => {
 
                                     </Col>
                                     <Col className='justify-content-end'>
-                                        <img style={{ width: '50%' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646737044/visamc.png_iihint.png' />
+                                        <img alt="visa logo" style={{ width: '50%' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646737044/visamc.png_iihint.png' />
                                     </Col>
                                 </Row>
                                 <Form.Group className="mb-3" controlId="creditcardnumber">

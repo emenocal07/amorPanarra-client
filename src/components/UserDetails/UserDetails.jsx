@@ -52,7 +52,7 @@ const UserDetails = ({ userDetails }) => {
                         <Container>
                             <Card.Body>
                                 <Link to='/'>
-                                    <Button className='btn btn-outline-dark' variant="light" size='sm'><img style={{ width: '28px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646900519/flecha2_laupdk.png' /></Button>
+                                    <Button className='btn btn-outline-dark' variant="light" size='sm'><img alt='arrow icon' style={{ width: '28px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646900519/flecha2_laupdk.png' /></Button>
                                 </Link>
                                 <Link to={`/perfiles/editar/${user_id}`}><Button style={{ width: '30%' }} className='btn btn-outline-dark' variant="light">Editar</Button></Link>
                                 {(user?.role === 'ADMIN') &&

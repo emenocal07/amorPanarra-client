@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/Auth.context'
 import NewProductForm from '../NewProductForm/NewProductForm'
 import './Navigation.css'
 import ShoppingCart from '../ShoppingCart/ShoppingCart'
+import { CartContext } from '../../context/Cart.context'
 
 
 
@@ -16,6 +17,12 @@ const Navigation = () => {
     const handleModalClose = () => setShowModal(false)
 
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
+    const { emptyCart } = useContext(CartContext)
+
+    const logOutAndEmptyCart = () => {
+        logOutUser()
+        emptyCart()
+    }
 
     return (
         <>
@@ -53,7 +60,7 @@ const Navigation = () => {
                                 <NavLink className='ms-auto' to={`/perfiles/${user?._id}`}>
                                     <Nav.Link as='span' >Hola {user?.username}!</Nav.Link>
                                 </NavLink>
-                                <Nav.Link as='span' onClick={logOutUser} style={{ cursor: 'pointer' }}>Cerrar sesión</Nav.Link>
+                                <Nav.Link as='span' onClick={() => logOutAndEmptyCart()} style={{ cursor: 'pointer' }}>Cerrar sesión</Nav.Link>
                             </>
                         }
                         <NavLink to="/detalles-pedido">

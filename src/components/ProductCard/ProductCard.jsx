@@ -18,7 +18,7 @@ const ProductCard = ({ name, image, price, glutenfree, _id }) => {
             <Container className='productCardContainer'>
                 <Link to={`/productos/${_id}`}><Card.Img className='productImage' variant="top" src={image} /></Link>
                 <Card.Body>
-                    <Link className='titleProductCard' to={`/productos/${_id}`}><Card.Title>{name} {glutenfree && <img className='gluten' src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646934143/gluten-free-icon_ranzca.png' />}</Card.Title></Link>
+                    <Link className='titleProductCard' to={`/productos/${_id}`}><Card.Title>{name} {glutenfree && <img className='gluten' alt='glutenfree icon' src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646934143/gluten-free-icon_ranzca.png' />}</Card.Title></Link>
                     <Row>
                         <Col md={6} className='align-items-center'>
                             <Card.Text>Precio: {price}€ </Card.Text>

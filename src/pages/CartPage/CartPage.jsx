@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { CartContext } from "../../context/Cart.context"
 import { AuthContext } from "../../context/Auth.context"
 import { Container, Table, Button, Row, Col } from "react-bootstrap"
@@ -33,7 +33,7 @@ const CartPage = () => {
                     return <tbody key={idx}>
                         <tr >
                             <td>{idx + 1}</td>
-                            <td><img className='tableImage' src={elm.product.image} /></td>
+                            <td><img className='tableImage' alt="product image" src={elm.product.image} /></td>
                             <td>{elm.product.name}</td>
                             <td>{elm.product.price?.toFixed(2)}€</td>
                             <td>
@@ -101,7 +101,8 @@ const CartPage = () => {
             </Row >
             <br />
         </Container >
-        : (isEmpty ? <h1>Vacio</h1> : <h1><LoadingSpinner /></h1>)
+        : <h1>Carrito vacio <LoadingSpinner /> </h1>
+    //    (isEmpty ? <h1>Vacio</h1> : <h1><LoadingSpinner /></h1>)
 }
 
 export default CartPage
