@@ -4,6 +4,7 @@ import { Card, Button, Container, Row, Col } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom'
 import { MessageContext } from "../../context/UserMessage.context"
 import usersService from '../../services/user.service'
+import './UserDetails.css'
 
 
 const UserDetails = ({ userDetails }) => {
@@ -52,11 +53,11 @@ const UserDetails = ({ userDetails }) => {
                         <Container>
                             <Card.Body>
                                 <Link to='/'>
-                                    <Button className='btn btn-outline-dark' variant="light" size='sm'><img style={{ width: '28px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646900519/flecha2_laupdk.png' /></Button>
+                                    <Button className='btn btn-outline-warning buttonUser' variant="light" size='sm'><img style={{ width: '28px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646946851/arrow-left-c_icon-icons.com_50470_fqfgzk.png' /></Button>
                                 </Link>
                                 <Link to={`/perfiles/editar/${user_id}`}><Button style={{ width: '30%' }} className='btn btn-outline-dark' variant="light">Editar</Button></Link>
                                 {(user?.role === 'ADMIN') &&
-                                    <Button style={{ width: '30%' }} className='btn btn-outline-danger' variant="light" onClick={() => deleteProfile()}>Eliminar</Button>
+                                    <Button style={{ width: '30%' }} className='btn btn-outline-danger buttonUser' variant="light" onClick={() => deleteProfile()}>Eliminar</Button>
                                 }
                             </Card.Body>
                         </Container>

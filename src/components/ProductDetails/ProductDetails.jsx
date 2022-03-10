@@ -49,7 +49,7 @@ const ProductDetails = ({ productDetails }) => {
                                 {/* <Card.Title>Información adicional</Card.Title>
                                 <hr /> */}
                                 <Link to='/'>
-                                    <Button className='btn btn-outline-dark' variant="light" size='sm'><img style={{ width: '30px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646900519/flecha2_laupdk.png' /></Button>
+                                    <Button className='btn btn-outline-warning' variant="light" size='sm'><img style={{ width: '30px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646946851/arrow-left-c_icon-icons.com_50470_fqfgzk.png' /></Button>
                                     {/* <Button style={{ width: '' }} className='btn btn-outline-warning' variant="light">Volver</Button> */}
                                 </Link>
                             </Card.Body>
@@ -78,10 +78,10 @@ const ProductDetails = ({ productDetails }) => {
                                     <Row >
                                         <Col >
                                             <Link to={`/productos/editar/${_id}`}>
-                                                <Button style={{ width: '25%' }} className='btn btn-outline-dark' variant="light" >Editar</Button>
+                                                <Button style={{ width: '25%' }} className='btn btn-outline-dark buttonProduct' variant="light" >Editar</Button>
                                             </Link >
 
-                                            <Button style={{ width: '25%' }} className='btn btn-outline-danger' variant="light" onClick={() => deleteProducts()}>Eliminar</Button>
+                                            <Button style={{ width: '25%' }} className='btn btn-outline-danger buttonProduct' variant="light" onClick={() => deleteProducts()}>Eliminar</Button>
                                         </Col>
                                         <Col >
                                         </Col>

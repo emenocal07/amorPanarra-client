@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Form, Button, Container, Row, Col, Card } from "react-bootstrap"
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import usersService from "../../services/user.service";
 import { MessageContext } from "../../context/UserMessage.context"
 
@@ -132,6 +132,9 @@ const EditUserForm = () => {
                         </Form>
                     </Col>
                 </Row>
+                <Link to='/'>
+                    <Button className='btn btn-outline-warning buttonUser' variant="light" size='sm'><img style={{ width: '28px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646946851/arrow-left-c_icon-icons.com_50470_fqfgzk.png' /></Button>
+                </Link>
             </Container>
 
         )

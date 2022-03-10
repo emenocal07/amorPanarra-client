@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { Form, Row, Col, Button, Container } from 'react-bootstrap'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import productsService from '../../services/product.service'
 import uploadService from '../../services/upload.service'
 import { MessageContext } from '../../context/UserMessage.context'
@@ -136,10 +136,12 @@ const EditProductForm = () => {
                             < div className="d-grid gap-2 mb-3" >
                                 <Button variant="warning" type="submit" disabled={loadingImage}>{loadingImage ? 'Espere por favor...' : 'Editar producto'}</Button>
                             </div>
-                            <br />
                         </Form >
                     </Col>
                 </Row>
+                <Link to='/'>
+                    <Button className='btn btn-outline-warning buttonUser' variant="light" size='sm'><img style={{ width: '28px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646946851/arrow-left-c_icon-icons.com_50470_fqfgzk.png' /></Button>
+                </Link>
             </Container>
         )
 }

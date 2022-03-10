@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react"
 import { CartContext } from "../../context/Cart.context"
 import { AuthContext } from "../../context/Auth.context"
-import { Container, Table, Button, Row, Col } from "react-bootstrap"
+import { Container, Table, Button, Row, Col, Card } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 import LoadingSpinner from "../../components/Spinner/Spinner"
 import './CartPage.css'
@@ -19,48 +19,55 @@ const CartPage = () => {
     return productsInCart.length
         ? <Container>
             <h1>Detalles de tu pedido</h1>
-            <Table striped bordered hover >
-                <thead >
-                    <tr>
-                        <th>#</th>
-                        <th>Producto</th>
-                        <th>Descripción</th>
-                        <th>Precio</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                {productsInCart.map((elm, idx) => {
-                    return <tbody key={idx}>
-                        <tr >
-                            <td>{idx + 1}</td>
-                            <td><img className='tableImage' src={elm.product.image} /></td>
-                            <td>{elm.product.name}</td>
-                            <td>{elm.product.price?.toFixed(2)}€</td>
-                            <td>
-                                <Button className='btn btn-outline-danger' variant="light" onClick={() => removeProductFromCart(elm._id)}>Eliminar</Button>
-                            </td>
-                        </tr>
-                    </tbody>
-                })
-                }
+            <Row>
+                <Col md={{ offset: 3, span: 6 }}>
 
-                <tfoot>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th>Subtotal</th>
-                        <th>{getSubtotal().toFixed(2)} €</th>
-                        <th></th>
+                    <Table size="sm" responsive="md" className='tableContent' >
+                        <thead>
+                            <tr >
+                                <th>#</th>
+                                <th>Producto</th>
+                                <th>Descripción</th>
+                                <th>Precio</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        {productsInCart.map((elm, idx) => {
+                            return <tbody key={idx}>
+                                <tr >
+                                    <td>{idx + 1}</td>
+                                    <td><img className='tableImage' src={elm.product.image} /></td>
+                                    <td>{elm.product.name}</td>
+                                    <td>{elm.product.price?.toFixed(2)}€</td>
+                                    <td>
+                                        <img className='delete' onClick={() => removeProductFromCart(elm._id)} style={{ width: '25px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646942769/50625343593_inpzav.png' />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        })
+                        }
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Subtotal</th>
+                                <th>{getSubtotal().toFixed(2)} €</th>
+                                <th> <Link to='/'>
+                                    <Button className='btn btn-outline-danger' variant="light" style={{ width: '90%' }} onClick={() => removeAllProductsFromCart()}>Eliminar compra</Button>
+                                </Link >
+                                </th>
 
-                    </tr>
-                </tfoot>
+                            </tr>
+                        </tfoot>
 
-            </Table>
+                    </Table>
+                </Col>
+            </Row>
 
-            <Row className="justify-content-md-end">
-                <Col md={{ span: 3, offset: 3 }}>
+            <Row>
+                <Col md={{ span: 3, offset: 6 }}>
                     <h3>Total compra</h3>
-                    <Table striped bordered hover >
+                    <Table >
                         <tbody >
                             <tr>
                                 <td>Subtotal:</td>
@@ -74,28 +81,19 @@ const CartPage = () => {
                                 <td>Total:</td>
                                 <td>{productsInCart.length ? getTotalPrice().toFixed(2) : '0.00'} €</td>
                             </tr>
-
                         </tbody>
-
                     </Table>
                 </Col>
             </Row>
 
             <Row >
-                <Col >
-                    <Link to='/'>
-                        <Button className='btn btn-outline-warning' variant="light" size='lg'>Seguir comprando</Button>
-                    </Link>
-                </Col>
-                <Col >
-                    <Link to='/'>
-                        <Button className='btn btn-outline-danger' variant="light" size='lg' onClick={() => removeAllProductsFromCart()}>Vaciar carrito</Button>
-                    </Link >
 
-                </Col >
-                <Col md={{ span: 3, offset: 3 }}>
+                <Col md={{ offset: 3, span: 6 }}>
+                    <Link to='/'>
+                        <Button className='btn btn-outline-dark cartButton' variant="light" size='lg' style={{ width: '49%' }}>Seguir comprando</Button>
+                    </Link>
                     <Link to='/finalizar-compra' >
-                        <Button className='buyButton btn btn-warning' style={{ width: '100%' }} variant="warning" size='lg'>Finalizar compra</Button>
+                        <Button className='buyButton btn btn-warning cartButton' style={{ width: '49%' }} variant="warning" size='lg'>Finalizar compra</Button>
                     </Link>
                 </Col>
             </Row >

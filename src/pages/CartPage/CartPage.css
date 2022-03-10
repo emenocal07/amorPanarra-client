@@ -1,5 +1,12 @@
 .tableImage{
-    width: 90px;
-    height: 90px;
+    width: 60px;
+    height: 60px;
     object-fit: cover;
+}
+.delete{
+    cursor: pointer;
+}
+
+.cartButton{
+    margin:2px
 }

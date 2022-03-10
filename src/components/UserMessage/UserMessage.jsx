@@ -8,11 +8,11 @@ const UserMessage = () => {
 
 
     return (
-        <Toast onClose={() => setShowMessage(false)} show={showMessage} delay={3000} autohide style={{ position: 'fixed', left: 10, bottom: 10 }}>
+        <Toast onClose={() => setShowMessage(false)} show={showMessage} delay={5000} autohide style={{ position: 'fixed', right: 10, top: 100 }}>
             <Toast.Header>
                 <strong className="me-auto">{messageInfo.title}</strong>
             </Toast.Header>
-            <Toast.Body>{messageInfo.desc}</Toast.Body>
+            <Toast.Body >{messageInfo.desc}</Toast.Body>
         </Toast>
 
     )
