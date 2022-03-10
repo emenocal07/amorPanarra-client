@@ -36,8 +36,8 @@ class UsersService {
         return this.api.put(`/cart/addProduct/${product_id}`)
     }
 
-    getCartProducts = (user_id) => {
-        return this.api.get(`/cart/getCartProducts`, user_id)
+    getCartProducts = () => {
+        return this.api.get(`/cart/getCartProducts`)
     }
 
     removeUserProduct = (product_id) => {

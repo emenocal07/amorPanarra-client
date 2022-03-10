@@ -16,7 +16,7 @@ const Footer = () => {
             </section> */}
 
 
-            <section className='footerEnd' style={{ backgroundColor: 'rgb(179, 139, 10)' }}>
+            <section className='footerEnd' style={{ backgroundColor: '#ffc107' }}>
                 &copy; {new Date().getFullYear()} Copyright:{' '}  Developed by Ernesto & Anna
             </section>
         </footer >
