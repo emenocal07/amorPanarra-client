@@ -20,14 +20,14 @@ function CartProviderWrapper(props) {
     const addProductToCart = (productId) => {
         usersService
             .addUserProduct(productId)
-            .then(({ data }) => setProductsInCart(data.productsCart))
+            .then(({ data }) => setProductsInCart(data))
             .catch(err => console.log(err))
     }
 
     const removeProductFromCart = (productId) => {
         usersService
             .removeUserProduct(productId)
-            .then(({ data }) => setProductsInCart(data.productsCart))
+            .then(({ data }) => loadCart())
             .catch(err => console.log(err))
     }
 
@@ -35,10 +35,12 @@ function CartProviderWrapper(props) {
 
     const getTotalPrice = () => getSubtotal() + shippingCost
 
-    const getTotalItems = () => productsInCart.length
+    const getTotalItems = () => productsInCart?.length
+
+    const emptyCart = () => setProductsInCart([])
 
     return (
-        <CartContext.Provider value={{ loadCart, productsInCart, removeProductFromCart, addProductToCart, shippingCost, getSubtotal, getTotalPrice, getTotalItems }}>
+        <CartContext.Provider value={{ loadCart, productsInCart, removeProductFromCart, addProductToCart, shippingCost, getSubtotal, getTotalPrice, getTotalItems, emptyCart }}>
             {props.children}
         </CartContext.Provider>
     )

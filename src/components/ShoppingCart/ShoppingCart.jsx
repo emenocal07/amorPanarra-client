@@ -13,7 +13,7 @@ function ShoppingCart() {
 
     return (
         <>
-            <img src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646412222/Amor%20Panarra/shoppingcart_77968_lfokg5.png' /> {<span className='numbers'>{getTotalItems()}</span>}
+            <img src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646412222/Amor%20Panarra/shoppingcart_77968_lfokg5.png' /> <span className='numbers'>{getTotalItems()}</span>
 
         </>
 

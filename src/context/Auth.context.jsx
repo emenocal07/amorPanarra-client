@@ -1,6 +1,7 @@
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState, useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom";
 import authService from '../services/auth.service'
+import { CartContext } from "./Cart.context"
 
 
 const AuthContext = createContext()
@@ -11,6 +12,8 @@ function AuthProviderWrapper(props) {
     const [isLoading, setIsLoading] = useState(true);
     const [user, setUser] = useState(null);
     const navigate = useNavigate()
+
+    const { emptyCart } = useContext(CartContext)
 
 
     const storeToken = (token) => {
@@ -46,6 +49,7 @@ function AuthProviderWrapper(props) {
     }
 
     const logOutUser = () => {
+        emptyCart()
         removeToken()
         setIsLoggedIn(false);
         setIsLoading(false);

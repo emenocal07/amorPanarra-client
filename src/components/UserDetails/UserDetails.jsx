@@ -1,11 +1,27 @@
 import { useContext } from 'react'
-import { Card, Container } from 'react-bootstrap'
 import { AuthContext } from '../../context/Auth.context'
+import { Card, Button, Container } from 'react-bootstrap'
+import { Link, useParams } from 'react-router-dom'
+import { MessageContext } from "../../context/UserMessage.context"
+import usersService from '../../services/user.service'
 
 
 const UserDetails = ({ userDetails }) => {
     const { username, userlastname, email, phone, address, role } = userDetails
     const { user } = useContext(AuthContext)
+
+    const { setShowMessage, setMessageInfo } = useContext(MessageContext)
+    const { user_id } = useParams()
+
+    const deleteProfile = () => {
+        usersService
+            .deleteUser(user_id)
+            .then(() => {
+                setShowMessage(true)
+                setMessageInfo({ title: 'Hecho!', desc: 'Usuario eliminado' })
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
         <Container>
@@ -21,15 +37,20 @@ const UserDetails = ({ userDetails }) => {
                 <Card.Text>Teléfono: {phone}</Card.Text>
                 <Card.Text>email: {email}</Card.Text>
                 <hr />
-                {(user?.role === 'ADMIN') &&
+                {
+                    (user?.role === 'ADMIN') &&
                     <>
                         <Card.Title>Rol</Card.Title>
                         <Card.Text>{role}</Card.Text>
                         <hr />
                     </>
                 }
+            </Card.Body >
+            <Card.Body>
+                <Link to={`/perfiles/editar/${user_id}`}><Button variant="warning">Editar</Button></Link>
+                <Button variant="danger" onClick={() => deleteProfile()}>Eliminar</Button>
             </Card.Body>
-        </Container>
+        </Container >
     )
 }
 
