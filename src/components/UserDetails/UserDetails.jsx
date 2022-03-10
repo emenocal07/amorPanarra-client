@@ -46,10 +46,18 @@ const UserDetails = ({ userDetails }) => {
                     </>
                 }
             </Card.Body >
-            <Card.Body>
-                <Link to={`/perfiles/editar/${user_id}`}><Button variant="warning">Editar</Button></Link>
-                <Button variant="danger" onClick={() => deleteProfile()}>Eliminar</Button>
-            </Card.Body>
+            <Container>
+                <Card.Body>
+                    <Link to='/'>
+                        <Button className='btn btn-outline-dark' variant="light" size='sm'><img style={{ width: '28px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646900519/flecha2_laupdk.png' /></Button>
+                        {/* <Button style={{ width: '' }} className='btn btn-outline-warning' variant="light">Volver</Button> */}
+                    </Link>
+                    <Link to={`/perfiles/editar/${user_id}`}><Button style={{ width: '10%' }} className='btn btn-outline-success' variant="light">Editar</Button></Link>
+                    {(user?.role === 'ADMIN') &&
+                        <Button style={{ width: '10%' }} className='btn btn-outline-danger' variant="light" onClick={() => deleteProfile()}>Eliminar</Button>
+                    }
+                </Card.Body>
+            </Container>
         </Container >
     )
 }

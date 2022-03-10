@@ -8,22 +8,16 @@ import './CartPage.css'
 
 const CartPage = () => {
 
-    const { productsInCart, loadCart, removeProductFromCart, getSubtotal, getTotalPrice, shippingCost } = useContext(CartContext)
+    const { productsInCart, loadCart, removeProductFromCart, getSubtotal, getTotalPrice, shippingCost, removeAllProductsFromCart, isEmpty } = useContext(CartContext)
 
     const { user } = useContext(AuthContext)
-
-    const [isFull, setIsFull] = useState(false)
 
     useEffect(() => {
         user && loadCart()
     }, [user])
 
-    useEffect(() => {
-        productsInCart?.length && setIsFull(true)
-    }, [productsInCart])
-
-    return productsInCart.length ? (
-        <Container>
+    return productsInCart.length
+        ? <Container>
             <h1>Detalles de tu pedido</h1>
             <Table striped bordered hover >
                 <thead >
@@ -35,18 +29,13 @@ const CartPage = () => {
                         <th></th>
                     </tr>
                 </thead>
-                {isFull && productsInCart.map((elm, idx) => {
+                {productsInCart.map((elm, idx) => {
                     return <tbody key={idx}>
                         <tr >
                             <td>{idx + 1}</td>
                             <td><img className='tableImage' src={elm.product.image} /></td>
                             <td>{elm.product.name}</td>
-                            <td>{elm.product.price.toFixed(2)}€</td>
-                            {/* <td> */}
-                            {/* <Button variant="danger" onClick={() => setItemQuantity((countValue) => countValue - 1)}>-</Button>
-                                {itemQuantity}
-                                <Button variant="danger" onClick={() => setItemQuantity((countValue) => countValue + 1)}>+</Button> */}
-                            {/* </td> */}
+                            <td>{elm.product.price?.toFixed(2)}€</td>
                             <td>
                                 <Button variant="danger" onClick={() => removeProductFromCart(elm._id)}>Eliminar</Button>
                             </td>
@@ -98,8 +87,9 @@ const CartPage = () => {
                 </Col>
                 <Col >
                     <Link to='/'>
-                        <Button className='btn btn-outline-warning' variant="danger" size='lg'>Vaciar carrito</Button>
+                        <Button className='btn btn-outline-warning' variant="danger" size='lg' onClick={() => removeAllProductsFromCart()}>Vaciar carrito</Button>
                     </Link>
+
                 </Col>
                 <Col md={{ span: 3, offset: 3 }}>
                     <Link to='/finalizar-compra' >
@@ -109,7 +99,7 @@ const CartPage = () => {
             </Row>
             <br />
         </Container>
-    ) : <h1><LoadingSpinner /></h1>
+        : (isEmpty ? <h1>Vacio</h1> : <h1><LoadingSpinner /></h1>)
 }
 
 export default CartPage

@@ -30,7 +30,6 @@ const UserDetailsPage = () => {
             {!isloading &&
                 <Container>
                     <UserDetails userDetails={userDetails} />
-
                 </Container>
             }
         </>

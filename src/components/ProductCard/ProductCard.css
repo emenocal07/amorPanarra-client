@@ -1,5 +1,6 @@
 .productCard {
     margin-bottom: 20px;
+    padding: 10px
 }
 
 .productImage {
@@ -11,4 +12,8 @@
 .titleProductCard{
     text-decoration: none;
     color: black;
+}
+
+.gluten {
+    width: 12%
 }

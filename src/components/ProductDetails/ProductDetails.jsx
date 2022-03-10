@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/Auth.context'
 import { MessageContext } from '../../context/UserMessage.context'
 import productsService from '../../services/product.service'
 import { CartContext } from '../../context/Cart.context'
+import './ProductDetails.css'
 
 const ProductDetails = ({ productDetails }) => {
 
@@ -36,7 +37,7 @@ const ProductDetails = ({ productDetails }) => {
                     <Row>
                         <Col>
                             <Card.Body>
-                                <Card.Title><h1>{name}</h1></Card.Title>
+                                <Card.Title><h1>{name} {glutenfree && <img className='glutenD' src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646934143/gluten-free-icon_ranzca.png' />}</h1></Card.Title>
                                 <br />
                                 <Card.Title>Descripción</Card.Title>
                                 <hr />
