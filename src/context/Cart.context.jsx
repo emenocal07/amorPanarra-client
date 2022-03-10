@@ -8,26 +8,40 @@ function CartProviderWrapper(props) {
 
     const [productsInCart, setProductsInCart] = useState([])
 
+    const [isEmpty, setIsEmpty] = useState(false)
+
     const shippingCost = 3.50
+
+    const updateCart = (products) => {
+        !products.length ? setIsEmpty(true) : setIsEmpty(false)
+        setProductsInCart(products)
+    }
 
     const loadCart = () => {
         usersService
             .getCartProducts()
-            .then(({ data }) => setProductsInCart(data.productsCart))
+            .then(({ data }) => updateCart(data.productsCart))
             .catch(err => console.log(err))
     }
 
     const addProductToCart = (productId) => {
         usersService
             .addUserProduct(productId)
-            .then(({ data }) => setProductsInCart(data))
+            .then(() => loadCart())
             .catch(err => console.log(err))
     }
 
     const removeProductFromCart = (productId) => {
         usersService
             .removeUserProduct(productId)
-            .then(({ data }) => loadCart())
+            .then(() => loadCart())
+            .catch(err => console.log(err))
+    }
+
+    const removeAllProductsFromCart = () => {
+        usersService
+            .removeAllUserProduct()
+            .then(() => loadCart())
             .catch(err => console.log(err))
     }
 
@@ -40,7 +54,7 @@ function CartProviderWrapper(props) {
     const emptyCart = () => setProductsInCart([])
 
     return (
-        <CartContext.Provider value={{ loadCart, productsInCart, removeProductFromCart, addProductToCart, shippingCost, getSubtotal, getTotalPrice, getTotalItems, emptyCart }}>
+        <CartContext.Provider value={{ loadCart, productsInCart, removeProductFromCart, addProductToCart, shippingCost, getSubtotal, getTotalPrice, getTotalItems, emptyCart, removeAllProductsFromCart, isEmpty }}>
             {props.children}
         </CartContext.Provider>
     )

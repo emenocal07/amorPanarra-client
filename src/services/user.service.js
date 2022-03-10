@@ -43,6 +43,10 @@ class UsersService {
     removeUserProduct = (product_id) => {
         return this.api.put(`/cart/removeProduct/${product_id}`)
     }
+
+    removeAllUserProduct = () => {
+        return this.api.put(`/cart/removeProducts`)
+    }
 }
 const usersService = new UsersService()
 

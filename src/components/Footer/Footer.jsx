@@ -1,24 +1,18 @@
 import './Footer.css'
-import { Link } from 'react-router-dom'
+import { ExternalLink } from 'react-external-link'
 
 
 const Footer = () => {
 
     return (
         <footer>
-            {/* <section className='subfooter'>
-                <ul >
-                    <Link to='/nosotros'><li>SOBRE NOSOTROS</li></Link>
-                    <br />
-                    <Link to='/contacto'><li>CONTACTO</li></Link>
-                </ul>
 
-            </section> */}
-
-
-            <section className='footerEnd' style={{ backgroundColor: '#ffc107' }}>
-                &copy; {new Date().getFullYear()} Copyright:{' '}  Developed by Ernesto & Anna
-            </section>
+            <div className='subfooter'>
+                <ExternalLink href='https://www.instagram.com/amorpanarra/?hl=es'>
+                    <span><img style={{ width: '43px' }} src="https://res.cloudinary.com/dabjtydsw/image/upload/v1646913561/instagram_tmjusu.png" alt="Logo instagram" /></span>
+                </ExternalLink>
+            </div>
+            &copy; {new Date().getFullYear()} Copyright:{' '}  Developed by Ernesto & Anna | Política de privacidad | Aviso legal
         </footer >
     )
 }
