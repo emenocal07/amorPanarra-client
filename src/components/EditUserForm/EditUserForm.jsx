@@ -132,7 +132,7 @@ const EditUserForm = () => {
                         </Form>
                     </Col>
                 </Row>
-                <Link to='/'>
+                <Link to='/perfiles'>
                     <Button className='btn btn-outline-warning buttonUser' variant="light" size='sm'><img style={{ width: '28px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646946851/arrow-left-c_icon-icons.com_50470_fqfgzk.png' /></Button>
                 </Link>
             </Container>
