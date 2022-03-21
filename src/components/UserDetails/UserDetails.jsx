@@ -31,8 +31,6 @@ const UserDetails = ({ userDetails }) => {
                     <Card>
                         <Card.Body>
                             <Card.Title><h1>{username} {userlastname}</h1></Card.Title>
-
-
                             <hr />
                             <Card.Title>Dirección</Card.Title>
                             <Card.Text>Calle {address.street.name} {address.street.number}, {address.postCode} {address.city}, {address.country}</Card.Text>
@@ -52,7 +50,7 @@ const UserDetails = ({ userDetails }) => {
                         </Card.Body >
                         <Container>
                             <Card.Body>
-                                <Link to='/'>
+                                <Link to='/perfiles'>
                                     <Button className='btn btn-outline-warning buttonUser' variant="light" size='sm'><img style={{ width: '28px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646946851/arrow-left-c_icon-icons.com_50470_fqfgzk.png' /></Button>
                                 </Link>
                                 <Link to={`/perfiles/editar/${user_id}`}><Button style={{ width: '30%' }} className='btn btn-outline-dark' variant="light">Editar</Button></Link>

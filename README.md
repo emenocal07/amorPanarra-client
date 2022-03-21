@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Amor Panarra
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description:
 
-## Available Scripts
+AmorPanarra is the third and final project of the Ironhack Web Development Bootcamp. A project that has been done by four hands by Anna Porras and Ernesto Espinoza. The project consists of an Online Bakery, an e-commerce where we put into practice what we learned throughout the bootcamp to get a Fullstack application. Amor Panarra is an online bakery with carefully selected and quality products for bread lovers.
 
-In the project directory, you can run:
+## Technologies used:
+SERVER: We used Express/Node for the server part, from where we created the relevant models and routes.
+As for the management of images of the entire application are managed through CLOUDINARY which greatly facilitates access and support for them.
+Regarding Database we have used MongoDB and Mongoose for DB management and transfer to the cloud with MongoDB Atlas.
 
-### `npm start`
+CLIENT: On the client side we have used REACT as a library, shelling out the components of the Web product to obtain a dynamic and attractive Single Page Application, likewise we used Hooks, Context API and JSON Web Token.
+In terms of layout we have used Bootstrap and CSS.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Working on:
+- Stripe implementation.
+- Add buttons for product listing when admin.
+- Add news and/or facts information.
+- Add product ratings
+- Add contact page.
+- Bug fixes: Uploading product image gives error on deployed page but not on local.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Endpoints
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| HTTP Method | URI path            | Description      |      Protected |
+| :---         |   :---:            |          ---:    |           ---: |
+| GET          | /                  | Render index page and category   |          |
+| GET          | /inicio-sesion     | Render Login and Register page                          |    |
+| POST / PUT   | /inicio-sesion     | Handle login and register page   |    |
+| GET          | /perfiles/:id      | Render user profile                        |    |
+| POST         | /perfiles/:id      | Handle user profile (edit)    |    |
+| DELETE       | /perfiles/:id      | Handle user profile (delete)    |  U+2705  |
+| GET          | /productos         | List of all products  |    |
+| GET          | /perfiles          | Render all users's profiles  | U+2705   |
+| PUT          | /                  | Modal to create product form | U+2705   |
+| GET          | /productos/:id     | Render product details   |  |
+| GET          | /productos/:id/editar   | Render edit page form   |  U+2705  |
+| POST / DELETE | /productos/:id/editar   | Handle edit and delete page form   |  U+2705  |
+| GET       | /detalles-pedido   | Render products in cart    |    |
+| GET       | /finalizar-compra  | Render payment page    |    |

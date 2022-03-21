@@ -4,7 +4,7 @@ import { useNavigate, useParams, Link } from 'react-router-dom'
 import productsService from '../../services/product.service'
 import uploadService from '../../services/upload.service'
 import { MessageContext } from '../../context/UserMessage.context'
-
+import LoadingSpinner from '../Spinner/Spinner'
 
 const EditProductForm = () => {
 
@@ -74,7 +74,7 @@ const EditProductForm = () => {
 
 
     return isLoading
-        ? <h1>Cargando</h1>
+        ? <LoadingSpinner />
         : (
             <Container >
                 <Row className='justify-content-center'>
@@ -139,7 +139,7 @@ const EditProductForm = () => {
                         </Form >
                     </Col>
                 </Row>
-                <Link to='/'>
+                <Link to={`/productos/${product_id}`}>
                     <Button className='btn btn-outline-warning buttonUser' variant="light" size='sm'><img style={{ width: '28px' }} src='https://res.cloudinary.com/dabjtydsw/image/upload/v1646946851/arrow-left-c_icon-icons.com_50470_fqfgzk.png' /></Button>
                 </Link>
             </Container>
