@@ -2,7 +2,7 @@
 
 ## Description:
 
-AmorPanarra is the third and final project of the Ironhack Web Development Bootcamp. A project that has been done by four hands by Anna Porras and Ernesto Espinoza. The project consists of an Online Bakery, an e-commerce where we put into practice what we learned throughout the bootcamp to get a Fullstack application. Amor Panarra is an online bakery with carefully selected and quality products for bread lovers. Take a look at it at: https://amorpanarra.netlify.app/
+AmorPanarra is the third and final project of the Ironhack Web Development Bootcamp. A project that has been done by four hands by Anna Porras and Ernesto Espinoza. The project consists of an Online Bakery, an e-commerce where we put into practice what we learned throughout the bootcamp to get a Fullstack application. Amor Panarra is an online bakery with carefully selected and quality products for bread lovers. Take a look at it at: https://amorpanarra2.netlify.app/
 
 ## Screenshots
 ![amorPanarra-screenshot](https://res.cloudinary.com/deif2qotx/image/upload/v1650645827/amorpanarra1_llhe2u.webp)
